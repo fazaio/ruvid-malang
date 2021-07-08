@@ -1,9 +1,11 @@
 const { default: axios } = require("axios");
 const cheerio = require("cheerio");
 const fs = require('fs')
+const CronJob = require('cron').CronJob;
+const fastify = require('fastify')({ logger: true })
+const path = require('path')
 
 const data = [[], [], []]
-
 function ruvid_ub() {
     axios.get('https://ruvid.ub.ac.id/front/').then(res => {
         const $ = cheerio.load(res.data);
@@ -154,11 +156,24 @@ async function loop(){
 }
 
 
+// ruvid_ub()
+// ruvid_yankes()
+// stockdarah()
+// loop()
 
-// ruvid_yankes_deep(3573251).then(r => console.log(r)).catch(e => fs.appendFileSync('log', '\n'+e))
+// var job = new CronJob('* * * * * *', function() {
+//   console.log('You will see this message every second');
+// }, null, true, 'Asia/Jakarta');
+// job.start();
 
 
-ruvid_ub()
-ruvid_yankes()
-stockdarah()
-loop()
+// ----------------------------- fastiy backend ----------------------------------
+fastify.register(require('fastify-static'), { root: path.join(__dirname, '') })
+fastify.get('/ruvid_yankes', async (req, rep) => {
+    return rep.sendFile('ruvid_yankes.json')
+})
+fastify.get('/stokdarah', async (req, rep) => {
+    return rep.sendFile('stokdarah.json')
+})
+
+fastify.listen(4000)
