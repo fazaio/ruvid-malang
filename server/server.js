@@ -56,7 +56,7 @@ function ruvid_ub() {
             }
         })
         data[2].push({ cron_at: `${new Date()}` })
-        fs.writeFileSync('ruvid_ub.json', JSON.stringify(data))
+        fs.writeFileSync('result/ruvid_ub.json', JSON.stringify(data))
     }).catch(e => {
         fs.appendFileSync('log', `\n[ruvid_ub] Failed scraping : ${new Date()} |` )
     })
@@ -83,7 +83,7 @@ function stockdarah() {
             darah[0].push(res)
         })
         darah[1].push({ cron_at: `${new Date()}` })
-        fs.writeFileSync('stokdarah.json', JSON.stringify(darah))
+        fs.writeFileSync('result/stokdarah.json', JSON.stringify(darah))
     }).catch(e => { 
         fs.appendFileSync('log', `\n[stokdarah] Failed scraping : ${new Date()} |` )
     })
@@ -94,21 +94,21 @@ const ruvid_yankes = () => {
     axios.get('http://yankes.kemkes.go.id/app/siranap/rumah_sakit?jenis=1&propinsi=35prop&kabkota=3573')
         .then(res => {
             const $ = cheerio.load(res.data);
-            $('.card-body').each(function (i, e) {
-                const phone = $($(e).find('p')[5]).text().trim() === '' ? $($(e).find('p')[4]).text().trim() : $($(e).find('p')[5]).text().trim()
+            $('.card').each(function (i, e) {
                 const res = {
                     rs: $($(e).find('h5')).text().trim(),
                     alamatRS: $($(e).find('p')[0]).text().trim(),
-                    statusBed: $($(e).find('p')[1]).text().trim().replace(/[^0-9a-z ]/gi, '').replace(/  +/g, ' '),
-                    antrian: $($(e).find('p')[2]).text().trim(),
-                    update: $($(e).find('p')[3]).text().trim(),
-                    konfirmasi: phone.replace(/[^0-9a-z ]/gi, '').replace(/  +/g, ' '),
+                    statusBed: $($(e).find('p')[2]).text().trim().replace(/[^0-9a-z ]/gi, '').replace(/  +/g, ' '),
+                    antrian: $($(e).find('p')[3]).text().trim(),
+                    update: $($(e).find('p')[4]).text().trim(),
+                    konfirmasi: $($(e).find('span')[0]).text().trim(),
                     link: $($(e).find('a')).attr('href').trim()
                 }
+                console.log(res);
                 rs[0].push(res)
             })
             rs[1].push({ cron_at: `${new Date()}` })
-            fs.writeFileSync('ruvid_yankes.json', JSON.stringify(rs))
+            fs.writeFileSync('result/ruvid_yankes.json', JSON.stringify(rs))
         }).catch (e => {
             fs.appendFileSync('log', `\n[yankes] Failed scraping : ${new Date()} | ${e.response}` )
         })
@@ -152,28 +152,35 @@ async function loop(){
         }
         resolve(all)
     })
-    fs.writeFileSync('detail_ruvid_yankes.json', JSON.stringify(save))
+    fs.writeFileSync('result/detail_ruvid_yankes.json', JSON.stringify(save))
 }
 
+
+// ----------------- main scrapper function --------------
 
 // ruvid_ub()
 // ruvid_yankes()
 // stockdarah()
 // loop()
 
-// var job = new CronJob('* * * * * *', function() {
-//   console.log('You will see this message every second');
+
+// -------------------------- crontab -----------------
+
+// var job = new CronJob('0 * * * * *', function() {
+//     console.log('start egine');
+//     ruvid_yankes()
+//     stockdarah()
 // }, null, true, 'Asia/Jakarta');
 // job.start();
 
 
 // ----------------------------- fastiy backend ----------------------------------
-fastify.register(require('fastify-static'), { root: path.join(__dirname, '') })
-fastify.get('/ruvid_yankes', async (req, rep) => {
-    return rep.sendFile('ruvid_yankes.json')
-})
-fastify.get('/stokdarah', async (req, rep) => {
-    return rep.sendFile('stokdarah.json')
-})
+// fastify.register(require('fastify-static'), { root: path.join(__dirname, 'result') })
+// fastify.get('/ruvid_yankes', async (req, rep) => {
+//     return rep.sendFile('ruvid_yankes.json')
+// })
+// fastify.get('/stokdarah', async (req, rep) => {
+//     return rep.sendFile('stokdarah.json')
+// })
 
-fastify.listen(4000)
+// fastify.listen(4000)
