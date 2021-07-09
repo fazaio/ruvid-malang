@@ -1,5 +1,5 @@
 <template>
-  <div @click="$router.push('/')">
+  <div @click="$router.replace('/')">
     <div class="p-1">
       <div class="container mx-auto">
         <div class="px-2 py-5 overflow-auto">

@@ -58,7 +58,7 @@ function ruvid_ub() {
         data[2].push({ cron_at: `${new Date()}` })
         fs.writeFileSync('result/ruvid_ub.json', JSON.stringify(data))
     }).catch(e => {
-        fs.appendFileSync('log', `\n[ruvid_ub] Failed scraping : ${new Date()} |` )
+        fs.appendFileSync('log', `\n[ruvid_ub] Failed scraping : ${new Date()} |`)
     })
 }
 
@@ -84,8 +84,8 @@ function stockdarah() {
         })
         darah[1].push({ cron_at: `${new Date()}` })
         fs.writeFileSync('result/stokdarah.json', JSON.stringify(darah))
-    }).catch(e => { 
-        fs.appendFileSync('log', `\n[stokdarah] Failed scraping : ${new Date()} |` )
+    }).catch(e => {
+        fs.appendFileSync('log', `\n[stokdarah] Failed scraping : ${new Date()} |`)
     })
 }
 
@@ -109,16 +109,16 @@ const ruvid_yankes = () => {
             })
             rs[1].push({ cron_at: `${new Date()}` })
             fs.writeFileSync('result/ruvid_yankes.json', JSON.stringify(rs))
-        }).catch (e => {
-            fs.appendFileSync('log', `\n[yankes] Failed scraping : ${new Date()} | ${e.response}` )
+        }).catch(e => {
+            fs.appendFileSync('log', `\n[yankes] Failed scraping : ${new Date()} | ${e.response}`)
         })
 }
 
 const ruvid_yankes_deep = (kode_rs) => {
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
         const link = `http://yankes.kemkes.go.id/app/siranap/tempat_tidur?kode_rs=${kode_rs}&jenis=1`
         rs_detail = []
-        axios.get(link, {timeout: 5000})
+        axios.get(link, { timeout: 5000 })
             .then(res => {
                 const $ = cheerio.load(res.data);
                 $('.card-body').each(function (i, e) {
@@ -138,17 +138,17 @@ const ruvid_yankes_deep = (kode_rs) => {
     })
 }
 
-async function loop(){
-    const rsArrr = [ 3573251, 3573044, 3573262, 3573260, 3573252, 3573215, 3573066, 3573055, 3573226, 3573258, 3573246, 3573011 ];
+async function loop() {
+    const rsArrr = [3573251, 3573044, 3573262, 3573260, 3573252, 3573215, 3573066, 3573055, 3573226, 3573258, 3573246, 3573011];
     const all = []
-    const save = await new Promise(async (resolve)=> {
+    const save = await new Promise(async (resolve) => {
         for (const iterator of rsArrr) {
-            try{
+            try {
                 const result = await ruvid_yankes_deep(iterator)
                 all.push(result)
-            } catch(e){
+            } catch (e) {
                 fs.appendFileSync('log', e)
-            }       
+            }
         }
         resolve(all)
     })
@@ -166,21 +166,36 @@ async function loop(){
 
 // -------------------------- crontab -----------------
 
-// var job = new CronJob('0 * * * * *', function() {
-//     console.log('start egine');
-//     ruvid_yankes()
-//     stockdarah()
-// }, null, true, 'Asia/Jakarta');
-// job.start();
+var job = new CronJob('0 * * * *', function() {
+    fs.appendFileSync('cron.log', `\n last triger : ${new Date()}`)
+    ruvid_yankes()
+    stockdarah()
+}, null, true, 'Asia/Jakarta');
+job.start();
 
 
 // ----------------------------- fastiy backend ----------------------------------
-// fastify.register(require('fastify-static'), { root: path.join(__dirname, 'result') })
-// fastify.get('/ruvid_yankes', async (req, rep) => {
-//     return rep.sendFile('ruvid_yankes.json')
-// })
-// fastify.get('/stokdarah', async (req, rep) => {
-//     return rep.sendFile('stokdarah.json')
-// })
+fastify.register(require('fastify-static'), { root: path.join(__dirname, 'result') })
 
-// fastify.listen(4000)
+fastify.get('/', async (req, rep) => {
+    return rep.send({ whoami: 'Github: @fazaio | IG : @faza.au | Twitter: @fazaux' })
+})
+fastify.get('/ruvid_yankes', async (req, rep) => {
+    return rep.sendFile('ruvid_yankes.json')
+})
+fastify.get('/stokdarah', async (req, rep) => {
+    return rep.sendFile('stokdarah.json')
+})
+fastify.get('/ambulance', async (req, rep) => {
+    return rep.sendFile('ambulance.json')
+})
+fastify.get('/oksigen', async (req, rep) => {
+    return rep.sendFile('oksigen.json')
+})
+
+fastify.listen(3000, '0.0.0.0', (err, address) => {
+    if (err) {
+        fastify.log.error(err)
+        process.exit(1)
+    }
+})
