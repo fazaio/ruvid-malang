@@ -7,6 +7,18 @@
           <card-oksigen :data="row" />
         </div>
       </div>
+        <div class="mt-3 px-4 py-2 mx-4 bg-white">
+        <b class="text-red-400">Penting!</b>
+        <div>
+          <div class="mt-2">
+            Data Diatas Dapat <b>Berubah</b> sewaktu-waktu, cek pada halaman resmi
+          untuk informasi lebih lanjut. <br />
+          <div class="mt-2">
+            <a href="https://www.google.com/search?q=isi+ulang+oksigen+malang"><b>Sumber Data:</b> https://www.google.com/search?q=isi+ulang+oksigen+malang/</a>
+          </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
