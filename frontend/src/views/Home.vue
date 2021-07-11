@@ -5,7 +5,7 @@
         <div class="px-2 py-5 overflow-auto">
           <div class="float-left">
             <div class="font-bold text-lg">
-              RUVID19 <span class="text-red-500 text-xl">.</span>
+              RUVID-MALANG <span class="text-red-500 text-xl">.</span>
             </div>
             <span
               >Kumpulan Informasi untuk tanggap <b>Covid-19</b> kota
