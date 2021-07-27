@@ -2,7 +2,7 @@
   <div>
     <div class="p-1">
       <div class="container mx-auto">
-        <div class="px-2 py-5 overflow-auto">
+        <div class="px-2 py-5 overflow-auto flex justify-between">
           <div class="float-left">
             <div class="font-bold text-lg">
               RUVID-MALANG <span class="text-red-500 text-xl">.</span>
@@ -12,8 +12,29 @@
               Malang.</span
             >
           </div>
-          <div class="float-right hidden">
-            <button class="text-gray-400">Info</button>
+          <div class="float-right">
+            <button
+              @click="$router.push('/about')"
+              class="p-2 shadow rounded bg-white text-gray-400"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-info-circle"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <circle cx="12" cy="12" r="9"></circle>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                <polyline points="11 12 12 12 12 16 13 16"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
       </div>

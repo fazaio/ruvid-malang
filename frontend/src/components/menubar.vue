@@ -24,6 +24,10 @@
         </div>
       </div>
     </div>
+    <div class="text-center py-2">
+      <span class="text-red-300 font-bold">*</span
+      ><span> Data diperbarui setiap 1 jam sekali dari laman sumber.</span>
+    </div>
   </div>
 </template>
 
