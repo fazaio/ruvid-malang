@@ -1,16 +1,13 @@
 <template>
   <div>
-    <Menubar />
-    <div class="container mx-auto">
-      <div class="text-center">
-        <div class="py-2 text-sm">Last update: {{ data[1][0].cron_at }}</div>
-      </div>
-      <div class="block md:grid lg:grid xl:grid grid-cols-2 gap-6">
+    <div class="px-8">
+      <div class="my-4 text-sm">Last update: {{ data[1][0].cron_at }}</div>
+      <div class="grid gap-6 grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <div v-for="datas in data[0]" :key="datas.rs">
           <card-rujukan :data="datas" />
         </div>
       </div>
-      <div class="mt-3 px-4 py-2 mx-4 bg-white">
+      <!-- <div class="mt-3 px-4 py-2 mx-4 bg-white">
         <b class="text-red-400">Penting!</b>
         <div>
           <div class="mt-2">
@@ -25,14 +22,14 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 import CardRujukan from "../components/cardRujukan.vue";
-import Menubar from "../components/menubar.vue";
+//import Menubar from "../components/menubar.vue";
 
 export default {
   data() {
@@ -42,7 +39,6 @@ export default {
     };
   },
   components: {
-    Menubar,
     CardRujukan,
   },
   created() {
@@ -54,5 +50,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
