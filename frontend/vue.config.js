@@ -1,5 +1,5 @@
 module.exports = {
-    lintOnSave: false,
+    lintOnSave: true,
     publicPath: process.env.NODE_ENV === 'production' ? '' : '',
     chainWebpack: config => {
         config
