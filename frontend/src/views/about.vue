@@ -1,80 +1,86 @@
 <template>
-  <div>
-    <menubar />
-    <div class="container mx-auto">
-      <div class="p-4 m-2 bg-white rounded shadow">
+  <div class="mt-8 px-8 md:mx-24">
+    <div id="tentang">
+      <h2 class="font-bold">Tentang Data.</h2>
+      <p>
+        Data pada web in i merupakan beberapa kumpulan informasi tanggap
+        covid-19 khususnya di kota Malang, Yang dirangkum menjadi satu bagian
+        untuk memudahkan mencari informasi tanggap covid seperti hotline
+        ambulance, hotline isi ulang Oksigen, sistem informasi rawat inap Rumah
+        Sakit, dan Stok darah UTD PMI kota Malang.
+      </p>
+    </div>
+
+    <section
+      id="disclaimer-data"
+      class="border-red-500 border-2 my-4 p-4 bg-white"
+    >
+      <p class="text-red-400 font-bold text-xl">Penting!</p>
+      <div>
+        <p class="mt-2">
+          Data pada situs ini diperbarui setiap satu jam sekali. Informasi
+          realtime dapat mengacu pada situs web resmi pemerintahan atau instansi
+          terkait.
+        </p>
+        <p class="mt-2">
+          Data diatas dapat berubah sewaktu-waktu, cek pada halaman resmi untuk
+          informasi lebih lanjut.
+        </p>
+        <div class="mt-2 flex flex-col gap-2">
+          <p class="font-bold text-md">Sumber Data:</p>
+          <a
+            class="underline text-blue-500"
+            href="https://yankes.kemkes.go.id/app/siranap/rumah_sakit?jenis=1&propinsi=35prop&kabkota=3573"
+          >
+            SIRANAP Kementrian Kesehatan</a
+          >
+          <a
+            class="underline text-blue-500"
+            href="https://kelpurwantoro.malangkota.go.id/2019/08/21/info-akses-ambulance-gratis-malang-raya/"
+          >
+            https://kelpurwantoro.malangkota.go.id</a
+          >
+          <a
+            class="underline text-blue-500"
+            href="http://ayodonor.pmi.or.id/stokdarah.php?module=3573"
+          >
+            Stok Darah UTD PMI Kota Malang (http://pmi.or.id)</a
+          >
+          <a
+            class="underline text-blue-500"
+            href="https://www.google.com/search?q=isi+ulang+oksigen+malang/"
+          >
+            Google Search Isi Ulang Oksigen Malang</a
+          >
+        </div>
+      </div>
+    </section>
+    <div class="mt-5">
+      <div class="font-bold">Dikelola oleh:</div>
+      <div class="m-2">
+        Twitter:
+        <span class="font-bold text-red-400"
+          ><a href="https://twitter.com/fazaux">@fazaux</a></span
+        >
+      </div>
+      <div class="m-2 text-gray-500">
+        Malang | 2021
+      </div>
+      <div class="m-2 text-gray-500">
+        Web:
+        <a href="http://fazaio.web.app"><i>https://fazaio.web.app</i></a>
+      </div>
+      <div class="m-2">
+        <a href="mailto:faza6028@gmail.com">
+          <span class="font-bold text-red-400">faza6028@gmail.com</span>
+        </a>
+      </div>
+      <div class="mt-5">
+        <div class="font-bold">Support:</div>
         <div>
-          <div class="font-bold">Tentang Data.</div>
-          <div>
-            Data pada web ini merupakan beberapa kumpulan informasi tanggap
-            covid-19 khususnya di kota <b>Malang</b>, Yang dirangkum menjadi
-            satu bagian untuk memudahkan mencari informasi tanggap covid seperti
-            hotline <b>ambulance</b>, hotline isi ulang <b>Oksigen</b>, sistem
-            informasi rawat inap Rumah Sakit, dan <b>Stok darah</b> UTD PMI kota
-            Malang. <br />
-            <div class="p-2 my-2 bg-red-200 border-2 border-red-400 rounded">
-              <b>Penting!</b> Data Dapat Berubah sewaktu-waktu.
-            </div>
-            <div class="p-2 my-2 bg-red-200 border-2 border-red-400 rounded">
-              <b>Penting!</b> Data diambil dan diperbarui dari laman sumber setiap <b>1 jam</b> sekali.
-            </div>
-            <div class="mt-4"><b>Sumber Data:</b></div>
-            <div class="mx-2 mt-2 text-gray-400">
-              <div class="m-1">
-                - https://yankes.kemkes.go.id/app/siranap/rumah_sakit?jenis=1&propinsi=35prop&kabkota=3573
-              </div>
-              <div class="m-1">
-                - https://kelpurwantoro.malangkota.go.id/2019/08/21/info-akses-ambulance-gratis-malang-raya/
-              </div>
-              <div class="m-1">- http://ayodonor.pmi.or.id/stokdarah.php?module=3573</div>
-              <div class="m-1">
-                - https://www.google.com/search?q=isi+ulang+oksigen+malang/
-              </div>
-            </div>
-          </div>
-          <div class="mt-5">
-            <div class="font-bold">Dikelolah oleh:</div>
-            <div class="m-2">. Twitter: <span class="font-bold text-red-400"><a href="https://twitter.com/fazaux">@fazaux</a></span></div>
-            <div class="m-2 text-gray-500">
-              .
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="inline icon icon-tabler icon-tabler-map-pin"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <circle cx="12" cy="11" r="3"></circle>
-                <path
-                  d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"
-                ></path>
-              </svg>
-              Malang | 2021
-            </div>
-            <div class="m-2 text-gray-500">
-              . Web:
-              <a href="http://fazaio.web.app"><i>https://fazaio.web.app</i></a>
-            </div>
-            <div class="m-2">. 
-              <a href="mailto:faza6028@gmail.com">
-                <svg xmlns="http://www.w3.org/2000/svg" class="inline icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-   <polyline points="3 7 12 13 21 7"></polyline>
-</svg> <span class="font-bold text-red-400">faza6028@gmail.com</span>
-              </a>
-            </div>
-          </div>
-          <div class="mt-5">
-            <div class="font-bold">Support:</div>
-            <div><a href="https://karyakarsa.com/Fazaio/sistem-informasi">https://karyakarsa.com/Fazaio/sistem-informasi</a></div>
-          </div>
+          <a href="https://karyakarsa.com/Fazaio/sistem-informasi"
+            >https://karyakarsa.com/Fazaio/sistem-informasi</a
+          >
         </div>
       </div>
     </div>
@@ -82,11 +88,9 @@
 </template>
 
 <script>
-import menubar from "../components/menubar.vue";
 export default {
-  components: { menubar },
+  components: {},
 };
 </script>
 
-<style>
-</style>
+<style></style>
