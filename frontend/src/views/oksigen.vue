@@ -1,31 +1,38 @@
 <template>
-  <div>
-    <menubar />
-    <div class="container mx-auto">
-      <div class="block md:grid lg:grid xl:grid grid-cols-2 gap-6">
-        <div v-for="row in data" :key="row.name">
-          <card-oksigen :data="row" />
+<section id="section-oksigen-malang" class="px-8 mt-8 md:mx-24">
+  <h2 class="pt-2 text-lg font-bold">Layanan Isi Ulang Oksigen Malang</h2>
+    <section
+      id="oksigen-card-group"
+      class="mt-8 grid gap-6 grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+    >
+      <card-oksigen v-for="row in data" :key="row.name" :data="row" />
+    </section>
+    <section
+      id="disclaimer-data"
+      class="border-red-500 border-2 my-4 p-4 bg-white"
+    >
+      <p class="text-red-400 font-bold text-xl">Penting!</p>
+      <div>
+        <p class="mt-2">
+          Data Diatas Dapat <em>Berubah</em> sewaktu-waktu, cek pada halaman resmi
+          untuk informasi lebih lanjut.
+        </p>
+        <div class="mt-2">
+          <p class="font-bold text-md">Sumber Data:</p>
+          <a
+            class="underline text-blue-500"
+            href="https://www.google.com/search?q=isi+ulang+oksigen+malang"
+          >
+            Google Search Isi Ulang Oksigen Malang</a
+          >
         </div>
       </div>
-        <div class="mt-3 px-4 py-2 mx-4 bg-white">
-        <b class="text-red-400">Penting!</b>
-        <div>
-          <div class="mt-2">
-            Data Diatas Dapat <b>Berubah</b> sewaktu-waktu, cek pada halaman resmi
-          untuk informasi lebih lanjut. <br />
-          <div class="mt-2">
-            <a href="https://www.google.com/search?q=isi+ulang+oksigen+malang"><b>Sumber Data:</b> https://www.google.com/search?q=isi+ulang+oksigen+malang/</a>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </section>
+  </section>
 </template>
 
 <script>
 import CardOksigen from '../components/cardOksigen.vue';
-import menubar from '../components/menubar.vue';
 export default {
   data(){
     return {
@@ -33,7 +40,6 @@ export default {
     }
   },
   components: { 
-    menubar, 
     CardOksigen 
   },
   created(){
