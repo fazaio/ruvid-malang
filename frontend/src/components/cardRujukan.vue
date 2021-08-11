@@ -59,7 +59,7 @@ export default {
       window.location.href = this.data.link;
     },
     rute() {
-      window.location.href = `https://google.com/search?q=${this.data.rs}`;
+      window.open(`https://google.com/search?q=${this.data.rs}`);
     },
     hubungi() {
       window.location.href = `tel:${this.data.konfirmasi}`;
