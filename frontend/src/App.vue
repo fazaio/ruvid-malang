@@ -1,6 +1,6 @@
 <template>
   <div class="text-gray-500 bg-gray-100">
-    <headers />
+    <!-- <headers /> -->
     <pageTitles />
     <router-view />
     <footers />
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import header from "./components/header.vue";
+// import header from "./components/header.vue";
 import footer from "./components/footer.vue";
 import pageTitle from "./components/pageTitle.vue";
 
@@ -16,7 +16,7 @@ export default {
   components: {
     footers: footer,
     pageTitles: pageTitle,
-    headers: header,
+    // headers: header,
   },
 };
 </script>
