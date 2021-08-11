@@ -1,5 +1,5 @@
 <template>
-  <section id="page-title" class="px-8 pt-12">
+  <section id="page-title" class="px-8 pt-12 md:mx-24">
       <div class="my-0 mx-auto">
         <!-- <font-awesome-icon icon="user-secret" /> -->
         <h1 class="font-bold text-4xl">

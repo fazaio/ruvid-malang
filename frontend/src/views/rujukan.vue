@@ -1,5 +1,5 @@
 <template>
-    <section id="section-rs-rujukan" class="px-8">
+    <section id="section-rs-rujukan" class="px-8 md:mx-24">
       <!-- Last Update Section -->
       <div class="my-4 text-sm">Last update: {{ data[1][0].cron_at }}</div>
 

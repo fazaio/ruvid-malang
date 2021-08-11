@@ -2,7 +2,7 @@
   <main id="home" class="px-8 pt-8">
     <section
       id="layanan"
-      class="grid gap-6 grid-flow-row grid-cols-1 md:grid-cols-2 grid-rows-2"
+      class="grid gap-6 grid-flow-row grid-cols-1 md:grid-cols-2 grid-rows-2 md:mx-24"
     >
         <card-layanan v-for="listLayanan in daftarLayanan" :key="listLayanan.url" :data="listLayanan" />
 
