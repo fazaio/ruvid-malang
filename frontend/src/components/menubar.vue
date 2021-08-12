@@ -1,33 +1,10 @@
 <template>
-  <div @click="$router.replace('/')">
-    <div class="p-1">
-      <div class="container mx-auto">
-        <div class="px-2 py-5 overflow-auto">
-          <button class="py-3 px-6 rounded-full bg-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="inline icon icon-tabler icon-tabler-arrow-back-up"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1"></path>
-            </svg>
-            Kembali
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="text-center py-2">
-      <span class="text-red-300 font-bold">*</span
-      ><span> Data diperbarui setiap 1 jam sekali dari laman sumber.</span>
-    </div>
+  <div id="back-to-home" @click="$router.replace('/')" class="bottom-4 sticky px-8">
+    <button class="bg-gray-100 border-2 border-blue-500 rounded text-center w-full h-12">
+      <p class="font-bold text-xl text-blue-500">
+        Kembali ke Halaman Utama
+      </p>
+    </button>
   </div>
 </template>
 
@@ -35,5 +12,4 @@
 export default {};
 </script>
 
-<style>
-</style>
+<style></style>
